@@ -35,7 +35,7 @@ def slavePodTemplate = """
             hostPath:
               path: /var/run/docker.sock
     """
-    def branch = """ "${scm.branches[0].name}".replaceAll(/^\*\//, '').replace("/", "-").toLowerCase() """
+    def branch = "${scm.branches[0].name}".replaceAll(/^\*\//, '').replace("/", "-").toLowerCase()
     
     podTemplate(name: k8slabel, label: k8slabel, yaml: slavePodTemplate, showRawYaml: false) {
       node(k8slabel) {
