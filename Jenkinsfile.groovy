@@ -55,7 +55,12 @@ def slavePodTemplate = """
                 stage("Docker Push") {
                     sh "docker push siitova/artemis:${branch.replace('version/', 'v')}"
                 }
+           
+                stage("Trigger Deploy") {
+                   build 'artemis-app-deploy'
+               }
             }
+
         }
       }
     }
