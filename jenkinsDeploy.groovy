@@ -61,7 +61,7 @@ def slavePodTemplate = """
       node(k8slabel) {
           
         stage("Pull SCM") {
-            git 'https://github.com/fuchicorp/artemis-class.git'
+            checkout scm
         }
 
         stage("Generate Variables") {
